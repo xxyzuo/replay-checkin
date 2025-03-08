@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install selenium
+          pip install selenium webdriver-manager
           # 安装 Chrome 浏览器和 chromedriver
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
