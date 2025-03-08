@@ -3,7 +3,7 @@ name: Daily Login
 on:
   schedule:
     - cron: '0 0 * * *'  # 每天 UTC 时间 00:00 触发
-  workflow_dispatch:
+  workflow_dispatch:     # 允许手动触发
 
 jobs:
   login:
@@ -20,11 +20,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install selenium webdriver-manager
-          # 安装 Chrome 浏览器和 chromedriver
+          # 安装 Chrome 浏览器
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
-          wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$(wget -q -O - https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
-          unzip /tmp/chromedriver.zip -d /usr/local/bin/
 
       - name: Run login script
         env:
