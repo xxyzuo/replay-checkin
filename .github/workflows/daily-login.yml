@@ -17,12 +17,18 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
       - name: Install dependencies
         run: |
           pip install selenium webdriver-manager
-          # 安装 Chrome 浏览器
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
+
+      - name: Remove old chromedriver
+        run: |
+          sudo rm -f /usr/local/bin/chromedriver
 
       - name: Run login script
         env:
